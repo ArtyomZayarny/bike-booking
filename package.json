@@ -1,0 +1,16 @@
+{
+  "name": "bike-booking",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ArtyomZayarny/bike-booking.git",
+  "author": "ArtemZayarny <artyom.zayarny@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "client": "cd ./client/bike-booking && yarn dev",
+    "server": "cd ./server && yarn dev",
+    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
