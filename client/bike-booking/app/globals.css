@@ -6,6 +6,17 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --text-color: #333;
+  --lightGray: #e8e8e8;
+  --gray: #717171;
+  --black: #000;
+  --available: #6fcf97;
+  --busy: #f2994a;
+  --unavailable: #eb5757;
+  --darkGray: #696969;
+  --midGray: #cbcaca;
+  --white: #fff;
+  --thinGray: #c4c4c4;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,10 +29,23 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: var(--font-saira);
+  overflow-x: scroll;
+}
+
+.main {
+  margin: 0 auto;
+  overflow-x: scroll;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

@@ -1,0 +1,27 @@
+.statistics {
+  padding: 10px;
+
+  .title {
+    color: var(--black);
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .attr {
+    font-size: 14px;
+
+    .val {
+      font-weight: 700;
+    }
+  }
+
+  .item {
+    display: flex;
+    margin-bottom: 5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

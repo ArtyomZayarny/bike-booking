@@ -1,0 +1,18 @@
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.list {
+  padding: 9px 12px;
+  border-right: 1px solid var(--thinGray);
+
+  .item {
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

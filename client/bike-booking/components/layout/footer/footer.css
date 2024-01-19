@@ -1,0 +1,21 @@
+.footer {
+  position: relative;
+  z-index: 1;
+  background-color: var(--darkGray);
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+
+  .author {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .position {
+    color: var(--midGray);
+  }
+
+  .name {
+    color: var(--white);
+  }
+}

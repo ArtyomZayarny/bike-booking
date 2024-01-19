@@ -1,0 +1,80 @@
+.card {
+  background-color: var(--lightGray);
+  padding: 12px 18px;
+  width: 618px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  &.available {
+    border-color: var(--available);
+  }
+
+  &.busy {
+    border-color: var(--busy);
+  }
+
+  &.unavailable {
+    border-color: var(--unavailable);
+    .title,
+    .price,
+    .close {
+      opacity: 0.5;
+    }
+  }
+
+  .card-info {
+    color: var(--text-color);
+    font-size: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .title {
+    margin-bottom: 1px;
+
+    .name {
+      font-weight: 700;
+    }
+  }
+
+  .status {
+    text-transform: uppercase;
+    grid-row: 3/4;
+    align-self: center;
+
+    .label {
+      margin-right: 18px;
+    }
+  }
+  .close {
+    justify-self: end;
+  }
+
+  .id {
+    color: var(--gray);
+    font-size: 8px;
+    line-height: 14px;
+    font-weight: 400;
+    margin-bottom: 1px;
+    grid-row: 2/3;
+  }
+
+  .price {
+    color: var(--black);
+    font-size: 24px;
+    font-weight: 400;
+    grid-row: 3/4;
+    justify-self: end;
+  }
+
+  .select {
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .close-btn {
+    cursor: pointer;
+  }
+}
