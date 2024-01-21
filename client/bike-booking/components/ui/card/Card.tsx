@@ -2,13 +2,26 @@ import { CloseButton } from "@/components/icons/closeButton";
 import { Select } from "../select/Select";
 import "./card.css";
 import { IBike } from "@/types";
+import { useContext } from "react";
+import { BikesContext } from "@/context/bikes-context";
+import { Status } from "./status.enum";
 
 type Props = {
   data: IBike;
 };
 
 export const Card = ({ data }: Props) => {
+  const { deleteBike, updateBike } = useContext(BikesContext);
   const { name, type, color, id, status, price } = data;
+
+  const handleDelete = (id: string) => {
+    deleteBike(id);
+  };
+
+  const updateStatus = (status: Status) => {
+    updateBike(id, status);
+  };
+
   return (
     <div className={`card ${status}`}>
       <div className="card-info">
@@ -19,13 +32,13 @@ export const Card = ({ data }: Props) => {
         <span className="id">{`ID: ${id}`}</span>
         <div className="status">
           <span className="label">Status:</span>
-          <Select currentStatus={status} />
+          <Select currentStatus={status} handleSelect={updateStatus} />
         </div>
         <div className="price">
           <span>{price}UAH/hr.</span>
         </div>
         <div className="close">
-          <div className="close-btn">
+          <div className="close-btn" onClick={() => handleDelete(id)}>
             <CloseButton />
           </div>
         </div>

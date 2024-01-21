@@ -69,6 +69,7 @@
   }
 
   .select {
+    text-transform: capitalize;
     background-color: transparent;
     cursor: pointer;
     outline: none;

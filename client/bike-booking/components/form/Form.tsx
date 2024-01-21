@@ -1,7 +1,11 @@
 "use client";
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { Button } from "../buttons/Button";
 import { Input } from "./Input";
+import { BikesContext } from "@/context/bikes-context";
+import { Status } from "../ui/card/status.enum";
+import { IBike } from "@/types";
+
 import styles from "./form.module.css";
 
 const initialFormState = {
@@ -15,18 +19,25 @@ const initialFormState = {
 };
 
 export const Form = () => {
+  const { addBike } = useContext(BikesContext);
   const [form, setForm] = useState(initialFormState);
   const handleChange = async (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = event.target;
-    setForm({ ...form, [name]: value });
+    let val = null;
+    const { name, value, type } = event.target;
+    val = value;
+    if (type === "number") {
+      val = value !== "" ? +val : "";
+    }
+    setForm({ ...form, [name]: val });
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("formData", form);
-    /* Validate and send data to server */
+    const bike = { ...form, status: Status.AVAILABLE };
+    addBike(bike as unknown as IBike);
+    setForm(initialFormState);
   };
 
   const resetForm = () => {

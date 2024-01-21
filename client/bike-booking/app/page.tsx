@@ -1,5 +1,5 @@
 import { Content } from "@/components/layout/content/Content";
-import { BikesContextProvider } from "@/context/bikes";
+import { BikesContextProvider } from "@/context/bikes-context";
 
 export default function Home() {
   return (

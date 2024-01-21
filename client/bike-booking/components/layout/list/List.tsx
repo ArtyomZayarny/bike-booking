@@ -2,7 +2,7 @@
 import { useContext } from "react";
 import { Card } from "../../ui/card/Card";
 import "./list.css";
-import { BikesContext } from "@/context/bikes";
+import { BikesContext } from "@/context/bikes-context";
 import { IBike } from "@/types";
 
 export const List = () => {
@@ -16,7 +16,7 @@ export const List = () => {
             {!storedBikes && loading && <h2>Loading.......</h2>}
             {storedBikes?.length === 0 && !loading && (
               <>
-                <h3>Seem you don't have any bike yet 🌩 </h3>
+                <h3>Seem you don&apos;t have any bike yet 🌩 </h3>
                 <span>Fill form to add your first bike 🚲 </span>
               </>
             )}
@@ -37,6 +37,7 @@ export const List = () => {
       </ul>
     );
   };
+
   return (
     <>{storedBikes?.length > 0 && !loading ? renderList() : emptyView()}</>
   );
