@@ -13,7 +13,6 @@ export const getStatistics = (data: IBike[]) => {
     if (item.status === Status.BUSY) {
       acc.booked = (acc.booked || 0) + 1;
     }
-
     //count available items
     if (item.status === Status.AVAILABLE) {
       acc.available = (acc.available || 0) + 1;
@@ -21,6 +20,10 @@ export const getStatistics = (data: IBike[]) => {
 
     //Count total items
     acc.total = arr.length;
+
+    //Recount if no booked or
+    acc?.booked ? acc.booked : (acc.booked = 0);
+    acc?.available ? acc.available : (acc.available = 0);
     return acc;
   }, {} as statisticsType);
 };
