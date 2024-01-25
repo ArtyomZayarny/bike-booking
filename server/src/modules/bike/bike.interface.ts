@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 
 export interface IBike {
-  id: mongoose.Types.ObjectId;
+  _id: mongoose.Types.ObjectId;
   name: string;
   type: string;
   color: string;
