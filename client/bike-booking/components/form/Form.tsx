@@ -14,7 +14,7 @@ const initialFormState = {
   color: "",
   wheelSize: "",
   price: "",
-  id: "",
+  slugID: "",
   description: "",
 };
 
@@ -79,8 +79,8 @@ export const Form = () => {
         type="number"
       />
       <Input
-        value={form.id}
-        name="id"
+        value={form.slugID}
+        name="slugID"
         placeholder="ID (slug): ХХХХХХХХХХХХХ"
         handleChange={handleChange}
       />

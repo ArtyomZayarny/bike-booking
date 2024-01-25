@@ -50,16 +50,31 @@ export const BikesContextProvider = ({ children }: Props) => {
 
   const deleteBike = useCallback(
     (id: string) => {
-      const updatedBikes = storedBikes?.filter((bike: IBike) => bike.id !== id);
+      const updatedBikes = storedBikes?.filter(
+        (bike: IBike) => bike._id !== id
+      );
       setStoredBikes(updatedBikes!);
     },
     [bikes, storedBikes]
   );
+  const addBikeToDB = async (bike: any) => {
+    const res = await fetch(`http://localhost:3001/api/v1/bikes`, {
+      method: "POST",
+      body: JSON.stringify(bike),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+
+    return data.bike;
+  };
 
   const addBike = useCallback(
-    (bike: IBike) => {
+    async (bike: IBike) => {
       const updatedBike = [...storedBikes!, bike];
       setStoredBikes(updatedBike);
+      await addBikeToDB(bike);
     },
     [bikes, storedBikes]
   );

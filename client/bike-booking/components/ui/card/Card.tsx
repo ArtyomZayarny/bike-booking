@@ -12,7 +12,7 @@ type Props = {
 
 export const Card = ({ data }: Props) => {
   const { deleteBike, updateBike } = useContext(BikesContext);
-  const { name, type, color, _id, status, price } = data;
+  const { name, type, color, _id, status, price, slugID } = data;
 
   const handleDelete = (id: string) => {
     deleteBike(id);
@@ -29,7 +29,7 @@ export const Card = ({ data }: Props) => {
           <span className="name">{name}</span>
           {`- ${type} (${color})`}
         </h3>
-        <span className="id">{`ID: ${_id}`}</span>
+        <span className="id">{`ID: ${slugID || ""}`}</span>
         <div className="status">
           <span className="label">Status:</span>
           <Select currentStatus={status} handleSelect={updateStatus} />
@@ -38,7 +38,7 @@ export const Card = ({ data }: Props) => {
           <span>{price}UAH/hr.</span>
         </div>
         <div className="close">
-          <div className="close-btn" onClick={() => handleDelete(id)}>
+          <div className="close-btn" onClick={() => handleDelete(_id)}>
             <CloseButton />
           </div>
         </div>
