@@ -4,6 +4,13 @@ import validator from 'validator';
 import { BikeStatus, IBike } from './bike.interface.ts';
 
 const bikeSchema = new mongoose.Schema<IBike>({
+  slugID: {
+    type: String,
+    required: [true, 'Bike must have slug id'],
+    unique: true,
+    trim: true,
+    minlength: [5, 'Bike slug id must have more or equal 5 characters'],
+  },
   name: {
     type: String,
     trim: true,

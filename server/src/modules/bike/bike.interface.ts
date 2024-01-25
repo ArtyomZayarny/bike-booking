@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 
 export interface IBike {
   _id: mongoose.Types.ObjectId;
+  slugID: string;
   name: string;
   type: string;
   color: string;
