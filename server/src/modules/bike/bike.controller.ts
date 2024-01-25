@@ -27,7 +27,7 @@ export class BikeController {
     try {
       const doc = await this.bikeService.create(req.body as unknown as IBike);
       return {
-        doc,
+        bike: doc,
       };
     } catch (error) {
       next(error);
