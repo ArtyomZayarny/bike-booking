@@ -1,7 +1,8 @@
 import { Status } from "./components/ui/card/status.enum";
 
 export interface IBike {
-  id: string;
+  _id: string;
+  slagID: string;
   name: string;
   type: string;
   status: Status.AVAILABLE | Status.UNAVAILABLE | Status.BUSY;

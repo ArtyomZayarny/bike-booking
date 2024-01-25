@@ -67,7 +67,7 @@ export const BikesContextProvider = ({ children }: Props) => {
   const updateBike = useCallback(
     (id: string, status: Status) => {
       const updatedBikes = storedBikes?.map((bike) => {
-        if (bike.id === id) {
+        if (bike._id === id) {
           bike.status = status;
           return bike;
         }

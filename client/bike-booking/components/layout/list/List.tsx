@@ -30,7 +30,7 @@ export const List = () => {
     return (
       <ul className="list">
         {storedBikes.map((bike: IBike) => (
-          <li className="item" key={bike.id}>
+          <li className="item" key={bike._id}>
             <Card data={bike} />
           </li>
         ))}

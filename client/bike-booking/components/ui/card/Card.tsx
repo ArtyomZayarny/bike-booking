@@ -12,14 +12,14 @@ type Props = {
 
 export const Card = ({ data }: Props) => {
   const { deleteBike, updateBike } = useContext(BikesContext);
-  const { name, type, color, id, status, price } = data;
+  const { name, type, color, _id, status, price } = data;
 
   const handleDelete = (id: string) => {
     deleteBike(id);
   };
 
   const updateStatus = (status: Status) => {
-    updateBike(id, status);
+    updateBike(_id, status);
   };
 
   return (
@@ -29,7 +29,7 @@ export const Card = ({ data }: Props) => {
           <span className="name">{name}</span>
           {`- ${type} (${color})`}
         </h3>
-        <span className="id">{`ID: ${id}`}</span>
+        <span className="id">{`ID: ${_id}`}</span>
         <div className="status">
           <span className="label">Status:</span>
           <Select currentStatus={status} handleSelect={updateStatus} />
