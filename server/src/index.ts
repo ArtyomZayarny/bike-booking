@@ -6,6 +6,7 @@ import { InversifyExpressServer } from 'inversify-express-utils';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import config from './config/config.ts';
+import { errorHandler } from './modules/errors/errorHandler.ts';
 import { APIContainer } from './inversify.config.ts';
 
 let server: any;
@@ -19,7 +20,7 @@ mongoose.connect(config.mongoose.url!).then(() => {
   });
 
   const app = server.build();
-
+  app.use(errorHandler);
   app.listen(3001, () => {
     console.log(`Listening to port 3001`);
   });

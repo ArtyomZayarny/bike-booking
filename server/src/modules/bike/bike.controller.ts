@@ -1,8 +1,14 @@
-import { NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { inject } from 'inversify';
-import { controller, httpGet, httpPost } from 'inversify-express-utils';
+import {
+  controller,
+  httpDelete,
+  httpGet,
+  httpPost,
+} from 'inversify-express-utils';
 
 import TYPES from '../../constants/types.ts';
+import { errorHandler } from '../errors/errorHandler.ts';
 import { IBike } from './bike.interface.ts';
 import { BikeService } from './bike.service.ts';
 
@@ -29,6 +35,24 @@ export class BikeController {
       return {
         bike: doc,
       };
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  @httpDelete('/:id', errorHandler)
+  public async deleteBike(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { id } = req.params;
+      const doc = await this.bikeService.delete(id);
+      if (!doc) {
+        return {
+          message: `Not doc found with that id = ${id}`,
+        };
+      }
+      return res.status(204).send({
+        data: null,
+      });
     } catch (error) {
       next(error);
     }
