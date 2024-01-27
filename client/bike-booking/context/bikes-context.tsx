@@ -10,6 +10,11 @@ import { useBikes } from "../hooks/useBikes";
 import { BikesContextType, IBike, statisticsType } from "@/types";
 import { Status } from "@/components/ui/card/status.enum";
 import { getStatistics } from "../utils/getStatistics";
+import {
+  addBikeToDB,
+  deleteBikeFromDB,
+  updateBikeToDB,
+} from "@/utils/apiHadlers";
 
 const initialStatistics: statisticsType = {
   total: 0,
@@ -54,21 +59,10 @@ export const BikesContextProvider = ({ children }: Props) => {
         (bike: IBike) => bike._id !== id
       );
       setStoredBikes(updatedBikes!);
+      deleteBikeFromDB(id);
     },
     [bikes, storedBikes]
   );
-  const addBikeToDB = async (bike: any) => {
-    const res = await fetch(`http://localhost:3001/api/v1/bikes`, {
-      method: "POST",
-      body: JSON.stringify(bike),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await res.json();
-
-    return data.bike;
-  };
 
   const addBike = useCallback(
     async (bike: IBike) => {
@@ -88,6 +82,7 @@ export const BikesContextProvider = ({ children }: Props) => {
         }
         return bike;
       });
+      // updateBikeToDB(id, status);
       setStoredBikes(updatedBikes!);
     },
     [bikes, storedBikes]
