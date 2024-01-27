@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon ./src/index.ts",
-    "prod": "NODE_ENV=production nodemon ./src/index.ts",
-    "build": "node ./src/index.ts"
+    "prod": "NODE_ENV=production nodemon ./src/index.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",

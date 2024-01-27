@@ -8,13 +8,10 @@
   "scripts": {
     "client": "cd ./client/bike-booking && yarn dev",
     "server": "cd ./server && yarn dev",
-    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "server:build": "cd ./server && yarn build"
+    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {
     "concurrently": "^8.2.2"
   },
-  "devDependencies": {
-    "nodemon": "^3.0.3"
-  }
+  "devDependencies": {}
 }
