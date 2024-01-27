@@ -66,15 +66,17 @@ export const BikesContextProvider = ({ children }: Props) => {
 
   const addBike = useCallback(
     async (bike: IBike) => {
-      const updatedBike = [...storedBikes!, bike];
+      const data = await addBikeToDB(bike);
+      const updatedBike = [...storedBikes!, data];
       setStoredBikes(updatedBike);
-      await addBikeToDB(bike);
     },
     [bikes, storedBikes]
   );
 
   const updateBike = useCallback(
-    (id: string, status: Status) => {
+    async (id: string, status: Status) => {
+      await updateBikeToDB(id, status);
+
       const updatedBikes = storedBikes?.map((bike) => {
         if (bike._id === id) {
           bike.status = status;
@@ -82,7 +84,6 @@ export const BikesContextProvider = ({ children }: Props) => {
         }
         return bike;
       });
-      updateBikeToDB(id, status);
       setStoredBikes(updatedBikes!);
     },
     [bikes, storedBikes]
