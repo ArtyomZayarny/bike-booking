@@ -82,7 +82,7 @@ export const BikesContextProvider = ({ children }: Props) => {
         }
         return bike;
       });
-      // updateBikeToDB(id, status);
+      updateBikeToDB(id, status);
       setStoredBikes(updatedBikes!);
     },
     [bikes, storedBikes]

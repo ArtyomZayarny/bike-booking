@@ -24,6 +24,9 @@ export const updateBikeToDB = async (id: string, status: Status) => {
   const res = await fetch(`http://localhost:3001/api/v1/bikes/${id}`, {
     method: "PATCH",
     body: JSON.stringify({ status }),
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
   const update = await res.json();
   return update;
