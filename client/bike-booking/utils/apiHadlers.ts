@@ -1,10 +1,9 @@
 import { Status } from "@/components/ui/card/status.enum";
 
-export const url =
-  process.env.API_ENDPOINT! || "http://localhost:3001/api/v1/bikes";
+export const url = process.env.NEXT_PUBLIC_URL_FORM_DATA;
 
 export const addBikeToDB = async (bike: any) => {
-  const res = await fetch(url, {
+  const res = await fetch(url!, {
     method: "POST",
     body: JSON.stringify(bike),
     headers: {
