@@ -8,7 +8,8 @@
   "scripts": {
     "client": "cd ./client/bike-booking && yarn dev",
     "server": "cd ./server && yarn dev",
-    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "server:build": "cd ./server && yarn build"
   },
   "dependencies": {
     "concurrently": "^8.2.2"
