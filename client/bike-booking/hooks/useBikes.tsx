@@ -10,7 +10,7 @@ export const useBikes = () => {
     setLoading(true);
     async function getBikes() {
       try {
-        const res = await fetch(url, {
+        const res = await fetch(url!, {
           method: "GET",
         });
         const data = await res.json();
