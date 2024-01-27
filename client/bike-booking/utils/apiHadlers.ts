@@ -1,8 +1,10 @@
 import { Status } from "@/components/ui/card/status.enum";
-import { IBike } from "@/types";
+
+export const url =
+  process.env.API_ENDPOINT! || "http://localhost:3001/api/v1/bikes";
 
 export const addBikeToDB = async (bike: any) => {
-  const res = await fetch(`http://localhost:3001/api/v1/bikes`, {
+  const res = await fetch(url, {
     method: "POST",
     body: JSON.stringify(bike),
     headers: {
@@ -15,13 +17,13 @@ export const addBikeToDB = async (bike: any) => {
 };
 
 export const deleteBikeFromDB = async (id: string) => {
-  await fetch(`http://localhost:3001/api/v1/bikes/${id}`, {
+  await fetch(`${url}/${id}`, {
     method: "DELETE",
   });
 };
 
 export const updateBikeToDB = async (id: string, status: Status) => {
-  const res = await fetch(`http://localhost:3001/api/v1/bikes/${id}`, {
+  const res = await fetch(`${url}/${id}`, {
     method: "PATCH",
     body: JSON.stringify({ status }),
     headers: {

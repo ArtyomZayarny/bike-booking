@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { IBike } from "@/types";
+import { url } from "@/utils/apiHadlers";
 
 export const useBikes = () => {
   const [bikes, setBikes] = useState<IBike[] | null>(null);
@@ -9,7 +10,7 @@ export const useBikes = () => {
     setLoading(true);
     async function getBikes() {
       try {
-        const res = await fetch(`http://localhost:3001/api/v1/bikes`, {
+        const res = await fetch(url, {
           method: "GET",
         });
         const data = await res.json();
